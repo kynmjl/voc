@@ -17,9 +17,6 @@
             position: relative;
             margin: 20px auto;
         }
-        .hidden {
-            display: none;
-        }
     </style>
     <script>
         let vocabList = []; // Initialisiere ein leeres Array
@@ -30,20 +27,9 @@
             const text = await response.text();
             const parser = new DOMParser();
             const htmlDocument = parser.parseFromString(text, 'text/html');
-            const rows = htmlDocument.querySelectorAll('table tr');
-
-            // Iteriere über die Zeilen und füge die Daten zum vocabList Array hinzu
-            rows.forEach((row, index) => {
-                if (index > 0) { // Überspringe die Header-Zeile
-                    const cols = row.querySelectorAll('td');
-                    if (cols.length > 1) {
-                        vocabList.push({
-                            de: cols[0].textContent,
-                            ar: cols[1].textContent
-                        });
-                    }
-                }
-            });
+            const vocabDataScript = htmlDocument.querySelector('script');
+            eval(vocabDataScript.textContent); // Führe den Script-Tag aus
+            vocabList = getVocabList(); // Hol die Vokabelliste
             showCard(); // Zeige die erste Karte
         }
 
@@ -76,12 +62,9 @@
     </script>
 </head>
 <body>
-    <!--Anzeige-->
     <h1>Vocab Beta</h1>
     <h2>FlashCards</h2>
     <div class="card" id="flashcard"></div>
     <button id="nextButton">Nächste Karte</button>
-    
-    <!--HTML Abschluss-->
 </body>
 </html>

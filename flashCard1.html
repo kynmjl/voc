@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -22,28 +21,14 @@
         }
     </style>
     <script>
-        let vocabList = []; // Initialisiere ein leeres Array
+        const vocabList = [
+            { de: "Beweis, Bestätigung", ar: "إثبات" },
+            { de: "Vater", ar: "أب" },
+            { de: "mein Vater", ar: "أبي" },
+            // Füge hier die restlichen Vokabeln hinzu
+        ];
+
         let currentCardIndex = 0;
-
-        async function loadVocabList() {
-            const response = await fetch('list1.html'); // Lade die Liste
-            const text = await response.text();
-            const parser = new DOMParser();
-            const htmlDocument = parser.parseFromString(text, 'text/html');
-            const rows = htmlDocument.querySelectorAll('table tbody tr');
-
-            // Iteriere über die Zeilen und füge die Daten zum vocabList Array hinzu
-            rows.forEach((row) => {
-                const cols = row.querySelectorAll('td');
-                if (cols.length > 1) {
-                    vocabList.push({
-                        de: cols[0].textContent,
-                        ar: cols[1].textContent
-                    });
-                }
-            });
-            showCard(); // Zeige die erste Karte
-        }
 
         function showCard() {
             const card = document.getElementById('flashcard');
@@ -65,20 +50,21 @@
             showCard();
         }
 
-        window.onload = async () => {
-            await loadVocabList(); // Lade die Vokabelliste beim Laden der Seite
-            document.getElementById('flashcard').onclick = () => {
-                flipCard(); // Karteikarte umdrehen
-            };
-            document.getElementById('nextButton').onclick = nextCard; // Nächste Karte
+        window.onload = function() {
+            showCard();
+            const card = document.getElementById('flashcard');
+            card.addEventListener('click', flipCard); // Karte umdrehen
+            document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
         };
     </script>
 </head>
 <body>
-    <h1>Flashcards</h1>
-    <div id="flashcard" class="card"></div>
+    <!--Anzeige-->
+    <h1>Vocab Beta</h1>
+    <h2>FlashCards</h2>
+    <div class="card" id="flashcard"></div>
     <button id="nextButton">Nächste Karte</button>
-    <a href="javascript:history.back()">Return</a><br>
-    <a href="index.html">Return to homepage</a>
+    
+    <!--HTML Abschluss-->
 </body>
 </html>

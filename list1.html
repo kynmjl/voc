@@ -1,311 +1,119 @@
-<!-- HTML Aufbau -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Vocabulary List 1</title>
+    <script>
+        // Hier kommt die Vokabelliste als Array
+        const vocabList = [
+            { de: "Beweis, Bestätigung", ar: "إثبات" },
+            { de: "Vater", ar: "أب" },
+            { de: "mein Vater", ar: "أبي" },
+            { de: "Bruder", ar: "أخ" },
+            { de: "Schwester", ar: "أخت" },
+            { de: "Tür (Plural = أبواب)", ar: "باب" },
+            { de: "Krone", ar: "تاج" },
+            { de: "und", ar: "و" },
+            { de: "Bruder und Schwester", ar: "أخ وأخت" },
+            { de: "Suche, Forschungsarbeit", ar: "بحث، أبحاث" },
+            { de: "oder", ar: "أو" },
+            { de: "ich suche", ar: "أبحث" },
+            { de: "Oh (Anredepartikel)", ar: "يا" },
+            { de: "unter", ar: "تحت" },
+            { de: "Oh Bruder!", ar: "يا أخ!" },
+            { de: "Schleier", ar: "حجاب" },
+            { de: "welche(r/s)?", ar: "أي؟" },
+            { de: "Pilgerfahrt", ar: "حج" },
+            { de: "Geliebter", ar: "حبيب" },
+            { de: "Pilger", ar: "حاج ج حجاج" },
+            { de: "mein Liebling", ar: "حبيبي" },
+            { de: "Liebe", ar: "حب" },
+            { de: "ich liebe, ich mag", ar: "أحب" },
+            { de: "Haus", ar: "بيت ج بيوت" },
+            { de: "Möbel, Mobiliar", ar: "أثاث" },
+            { de: "Kopf", ar: "رأس" },
+            { de: "Lektion", ar: "درس ج دروس" },
+            { de: "Meer", ar: "بحر" },
+            { de: "studieren, lernen", ar: "درس، يدرس" },
+            { de: "trinken", ar: "شرب، يشرب" },
+            { de: "Löwe", ar: "أسد" },
+            { de: "Tee", ar: "شاي" },
+            { de: "frei", ar: "حرّ" },
+            { de: "Morgen", ar: "صباح" },
+            { de: "wenn, falls", ar: "إذا" },
+            { de: "Freund, Besitzer", ar: "صاحب ج أصحاب" },
+            { de: "Haus (fem.)", ar: "دار ج دور" },
+            { de: "Person", ar: "شخص ج أشخاص" },
+            { de: "hinausgehen", ar: "خرج" },
+            { de: "Erde (fem.)", ar: "أرض" },
+            { de: "Nimm!", ar: "خذ!" },
+            { de: "Bäume (Koll.)", ar: "شجر" },
+            { de: "Nachricht", ar: "خبر ج أخبار" },
+            { de: "grün", ar: "أخضر" },
+            { de: "Brot", ar: "خبز" },
+            { de: "Streik", ar: "إضراب" },
+            { de: "grüner Salat", ar: "خس" },
+            { de: "Minister", ar: "وزير ج وزراء" },
+            { de: "Stop! Halt an!", ar: "قف!" },
+            { de: "Medizin", ar: "طب" },
+            { de: "wissen, kennen, erfahren", ar: "عرف" },
+            { de: "Arzt", ar: "طبيب" },
+            { de: "Wirtschaft", ar: "إقتصاد" },
+            { de: "Linie, Schrift", ar: "خط ج خطوط" },
+            { de: "Äpfel (Koll.)", ar: "تفاح" },
+            { de: "Kartoffeln (Koll.)", ar: "بطاطا" },
+            { de: "Osten, Orient", ar: "شرق" },
+            { de: "Glück, Los", ar: "حظ" },
+            { de: "Westen", ar: "غرب" },
+            { de: "öffnen", ar: "فتح" },
+            { de: "arabisch, Araber", ar: "عربي ج عرب" },
+            { de: "Wetter", ar: "طقس" },
+            { de: "schneiden, überqueren", ar: "قطع" },
+            { de: "verkaufen", ar: "باع" },
+            { de: "Küste, Ufer", ar: "شط" },
+            { de: "nach (zeitl.)", ar: "بعد" },
+            { de: "Recht (Pl. auch: Jura)", ar: "حق ج حقوق" },
+            { de: "reisen", ar: "سافر، يسافر" },
+            { de: "so, dann, denn, und", ar: "ف" },
+            { de: "in", ar: "في" },
+            { de: "Bagdad", ar: "بغداد" },
+        ];
+
+        function populateTable() {
+            const tableBody = document.getElementById('vocabTableBody');
+            vocabList.forEach(vocab => {
+                const row = document.createElement('tr');
+                const deCell = document.createElement('td');
+                deCell.textContent = vocab.de;
+                const arCell = document.createElement('td');
+                arCell.textContent = vocab.ar;
+
+                row.appendChild(deCell);
+                row.appendChild(arCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Tabelle beim Laden der Seite befüllen
+        window.onload = populateTable;
+    </script>
 </head>
 <body>
+    <!-- Liste mit allen Vokabeln -->
+    <h1>Vocab Beta</h1>
+    <h2>Vocabulary List 1</h2>
 
-<!-- Liste mit allen Vokabeln -->
-<h1>Vocab Beta</h1>
-<h2>Vocabulary List 1</h2>
+    <table border="1">  <!-- border="1" fügt einen Rahmen zur Tabelle hinzu -->
+        <tr>
+            <th>Deutsch</th>   <!-- Tabellenüberschrift Deutsch -->
+            <th>Fremdsprache</th> <!-- Tabellenüberschrift Fremdsprache -->
+        </tr>
+        <tbody id="vocabTableBody">
+            <!-- Hier wird die Tabelle dynamisch gefüllt -->
+        </tbody>
+    </table><br>
 
-<table border="1">  <!-- border="1" fügt einen Rahmen zur Tabelle hinzu -->
-    <tr>
-        <th>Deutsch</th>   <!-- Tabellenüberschrift Deutsch -->
-        <th>Fremdsprache</th> <!-- Tabellenüberschrift Fremdsprache -->
-       </tr>
-    <tr>
-        <td>Beweis, Bestätigung</td>
-        <td>إثبات</td>
-    </tr>
-    <tr>
-        <td>Vater</td>
-        <td>أب</td>
-    </tr>
-    <tr>
-        <td>mein Vater</td>
-        <td>أبي</td>
-    </tr>
-    <tr>
-        <td>Bruder</td>
-        <td>أخ</td>
-    </tr>
-    <tr>
-        <td>Schwester</td>
-        <td>أخت</td>
-    </tr>
-    <tr>
-        <td>Tür (Plural = أبواب)</td>
-        <td>باب</td>
-    </tr>
-    <tr>
-        <td>Krone</td>
-        <td>تاج</td>
-    </tr>
-    <tr>
-        <td>und</td>
-        <td>و</td>
-    </tr>
-    <tr>
-        <td>Bruder und Schwester</td>
-        <td>أخ وأخت</td>
-    </tr>
-    <tr>
-        <td>Suche, Forschungsarbeit</td>
-        <td>بحث، أبحاث</td>
-    </tr>
-    <tr>
-        <td>oder</td>
-        <td>أو</td>
-    </tr>
-    <tr>
-        <td>ich suche</td>
-        <td>أبحث</td>
-    </tr>
-    <tr>
-        <td>Oh (Anredepartikel)</td>
-        <td>يا</td>
-    </tr>
-    <tr>
-        <td>unter</td>
-        <td>تحت</td>
-    </tr>
-    <tr>
-        <td>Oh Bruder!</td>
-        <td>يا أخ!</td>
-    </tr>
-    <tr>
-        <td>Schleier</td>
-        <td>حجاب</td>
-    </tr>
-    <tr>
-        <td>welche(r/s)?</td>
-        <td>أي؟</td>
-    </tr>
-    <tr>
-        <td>Pilgerfahrt</td>
-        <td>حج</td>
-    </tr>
-    <tr>
-        <td>Geliebter</td>
-        <td>حبيب</td>
-    </tr>
-    <tr>
-        <td>Pilger</td>
-        <td>حاج ج حجاج</td>
-    </tr>
-    <tr>
-        <td>mein Liebling</td>
-        <td>حبيبي</td>
-    </tr>
-    <tr>
-        <td>Liebe</td>
-        <td>حب</td>
-    </tr>
-    <tr>
-        <td>ich liebe, ich mag</td>
-        <td>أحب</td>
-    </tr>
-    <tr>
-        <td>Haus</td>
-        <td>بيت ج بيوت</td>
-    </tr>
-    <tr>
-        <td>Möbel, Mobiliar</td>
-        <td>أثاث</td>
-    </tr>
-    <tr>
-        <td>Kopf</td>
-        <td>رأس</td>
-    </tr>
-    <tr>
-        <td>Lektion</td>
-        <td>درس ج دروس</td>
-    </tr>
-    <tr>
-        <td>Meer</td>
-        <td>بحر</td>
-    </tr>
-    <tr>
-        <td>studieren, lernen</td>
-        <td>درس، يدرس</td>
-    </tr>
-    <tr>
-        <td>trinken</td>
-        <td>شرب، يشرب</td>
-    </tr>
-    <tr>
-        <td>Löwe</td>
-        <td>أسد</td>
-    </tr>
-    <tr>
-        <td>Tee</td>
-        <td>شاي</td>
-    </tr>
-    <tr>
-        <td>frei</td>
-        <td>حرّ</td>
-    </tr>
-    <tr>
-        <td>Morgen</td>
-        <td>صباح</td>
-    </tr>
-    <tr>
-        <td>wenn, falls</td>
-        <td>إذا</td>
-    </tr>
-    <tr>
-        <td>Freund, Besitzer</td>
-        <td>صاحب ج أصحاب</td>
-    </tr>
-    <tr>
-        <td>Haus (fem.)</td>
-        <td>دار ج دور</td>
-    </tr>
-    <tr>
-        <td>Person</td>
-        <td>شخص ج أشخاص</td>
-    </tr>
-    <tr>
-        <td>hinausgehen</td>
-        <td>خرج</td>
-    </tr>
-    <tr>
-        <td>Erde (fem.)</td>
-        <td>أرض</td>
-    </tr>
-    <tr>
-        <td>Nimm!</td>
-        <td>خذ!</td>
-    </tr>
-    <tr>
-        <td>Bäume (Koll.)</td>
-        <td>شجر</td>
-    </tr>
-    <tr>
-        <td>Nachricht</td>
-        <td>خبر ج أخبار</td>
-    </tr>
-    <tr>
-        <td>grün</td>
-        <td>أخضر</td>
-    </tr>
-    <tr>
-        <td>Brot</td>
-        <td>خبز</td>
-    </tr>
-    <tr>
-        <td>Streik</td>
-        <td>إضراب</td>
-    </tr>
-    <tr>
-        <td>grüner Salat</td>
-        <td>خس</td>
-    </tr>
-    <tr>
-        <td>Minister</td>
-        <td>وزير ج وزراء</td>
-    </tr>
-    <tr>
-        <td>Stop! Halt an!</td>
-        <td>قف!</td>
-    </tr>
-    <tr>
-        <td>Medizin</td>
-        <td>طب</td>
-    </tr>
-    <tr>
-        <td>wissen, kennen, erfahren</td>
-        <td>عرف</td>
-    </tr>
-    <tr>
-        <td>Arzt</td>
-        <td>طبيب</td>
-    </tr>
-    <tr>
-        <td>Wirtschaft</td>
-        <td>إقتصاد</td>
-    </tr>
-    <tr>
-        <td>Linie, Schrift</td>
-        <td>خط ج خطوط</td>
-    </tr>
-    <tr>
-        <td>Äpfel (Koll.)</td>
-        <td>تفاح</td>
-    </tr>
-    <tr>
-        <td>Kartoffeln (Koll.)</td>
-        <td>بطاطا</td>
-    </tr>
-    <tr>
-        <td>Osten, Orient</td>
-        <td>شرق</td>
-    </tr>
-    <tr>
-        <td>Glück, Los</td>
-        <td>حظ</td>
-    </tr>
-    <tr>
-        <td>Westen</td>
-        <td>غرب</td>
-    </tr>
-    <tr>
-        <td>öffnen</td>
-        <td>فتح</td>
-    </tr>
-    <tr>
-        <td>arabisch, Araber</td>
-        <td>عربي ج عرب</td>
-    </tr>
-    <tr>
-        <td>Wetter</td>
-        <td>طقس</td>
-    </tr>
-    <tr>
-        <td>schneiden, überqueren</td>
-        <td>قطع</td>
-    </tr>
-    <tr>
-        <td>verkaufen</td>
-        <td>باع</td>
-    </tr>
-    <tr>
-        <td>Küste, Ufer</td>
-        <td>شط</td>
-    </tr>
-    <tr>
-        <td>nach (zeitl.)</td>
-        <td>بعد</td>
-    </tr>
-    <tr>
-        <td>Recht (Pl. auch: Jura)</td>
-        <td>حق ج حقوق</td>
-    </tr>
-    <tr>
-        <td>reisen</td>
-        <td>سافر، يسافر</td>
-    </tr>
-    <tr>
-        <td>so, dann, denn, und</td>
-        <td>ف</td>
-    </tr>
-    <tr>
-        <td>in</td>
-        <td>في</td>
-    </tr>
-    <tr>
-        <td>Bagdad</td>
-        <td>بغداد</td>
-    </tr>
-</table><br>
-
-<!-- Zurück -->
-<a href="javascript:history.back()">Return</a><br>
-<a href="index.html">Return to homepage</a>
-
-
-<!-- HTML Aufbau Abschluss -->
+    <!-- Zurück -->
+    <a href="javascript:history.back()">Return</a><br>
+    <a href="index.html">Return to homepage</a>
 </body>
 </html>

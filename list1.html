@@ -80,15 +80,28 @@
             ]
         };
 
-        // Diese Funktion macht die Vokabelliste verfügbar
-        function getVocabList() {
-            return vocabData.vocabList;
+        function populateTable() {
+            const tableBody = document.getElementById('vocabTableBody');
+            vocabData.vocabList.forEach(vocab => {
+                const row = document.createElement('tr');
+                const deCell = document.createElement('td');
+                deCell.textContent = vocab.de;
+                const arCell = document.createElement('td');
+                arCell.textContent = vocab.ar;
+
+                row.appendChild(deCell);
+                row.appendChild(arCell);
+                tableBody.appendChild(row);
+            });
         }
+
+        window.onload = populateTable; // Tabelle beim Laden der Seite befüllen
     </script>
 </head>
 <body>
     <h1>Vocab Beta</h1>
     <h2>Vocabulary List 1</h2>
+
     <table border="1">
         <tr>
             <th>Deutsch</th>
@@ -99,6 +112,7 @@
         </tbody>
     </table>
     <br>
+
     <a href="javascript:history.back()">Return</a><br>
     <a href="index.html">Return to homepage</a>
 </body>

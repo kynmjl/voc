@@ -21,6 +21,10 @@
             display: none;
         }
     </style>
+
+    
+    <!--Java Skript Beginn-->
+    
     <script src="vocab1.js"></script>
     <script>
 let currentCardIndex = 0;
@@ -53,16 +57,27 @@ window.onload = function() {
     document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
 };
 
-    </script>
+        //Vorherige Karte (Java-Funktion) 
+        function prevCard() {
+    currentCardIndex = (currentCardIndex - 1 + vocabList.length) % vocabList.length; // Zurück zur vorherigen Karte
+    showCard();
+}
+
+
+    </script> <!--Skript Java Ende-->
+
+    
 </head>
 <body>
     <h1>Vocab Beta</h1>
     <h2>FlashCards</h2>
-    <h3 id="counter">Aktuelle Karte: 1 / 10</h3> <!-- Die 10 sollte durch die Anzahl der Vokabeln ersetzt werden -->
+    <h3 id="counter">Card: 1 / 10</h3> <!-- Die 10 sollte durch die Anzahl der Vokabeln ersetzt werden -->
 
     <div class="card" id="flashcard"></div>
  <div style="display: flex; justify-content: center;">
     <button id="nextButton">Next</button>
+     <button id="prevButton">Back</button>
+     
 </div>
 
 

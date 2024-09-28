@@ -55,4 +55,30 @@
             const card = document.getElementById('flashcard');
             if (card.innerHTML === vocabList[currentCardIndex].de) {
                 card.innerHTML = card.dataset.ar; // Arabisch anzeigen
-            } else
+            } else {
+                showCard(); // Deutsch zurück anzeigen
+            }
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % vocabList.length; // Nächste Karte
+            showCard();
+        }
+
+        window.onload = async () => {
+            await loadVocabList(); // Lade die Vokabelliste beim Laden der Seite
+            document.getElementById('flashcard').onclick = () => {
+                flipCard(); // Karteikarte umdrehen
+            };
+            document.getElementById('nextButton').onclick = nextCard; // Nächste Karte
+        };
+    </script>
+</head>
+<body>
+    <h1>Flashcards</h1>
+    <div id="flashcard" class="card"></div>
+    <button id="nextButton">Nächste Karte</button>
+    <a href="javascript:history.back()">Return</a><br>
+    <a href="index.html">Return to homepage</a>
+</body>
+</html>

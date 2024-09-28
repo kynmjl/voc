@@ -1,11 +1,73 @@
-<!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <title>FlashCard Set 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <style>
+        .card {
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+            margin: 20px auto;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        const vocabList = [
+            { de: "Beweis, Bestätigung", ar: "إثبات" },
+            { de: "Vater", ar: "أب" },
+            { de: "mein Vater", ar: "أبي" },
+            // Füge hier die restlichen Vokabeln hinzu
+        ];
+
+        let currentCardIndex = 0;
+
+        function showCard() {
+            const card = document.getElementById('flashcard');
+            card.innerHTML = vocabList[currentCardIndex].de; // Deutsch anzeigen
+            card.dataset.ar = vocabList[currentCardIndex].ar; // Arabisch speichern
+        }
+
+        function flipCard() {
+            const card = document.getElementById('flashcard');
+            if (card.innerHTML === vocabList[currentCardIndex].de) {
+                card.innerHTML = card.dataset.ar; // Arabisch anzeigen
+            } else {
+                showCard(); // Deutsch zurück anzeigen
+            }
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % vocabList.length; // Nächste Karte
+            showCard();
+        }
+
+        window.onload = function() {
+            showCard();
+            const card = document.getElementById('flashcard');
+            card.addEventListener('click', flipCard); // Karte umdrehen
+            document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
+        };
+    </script>
 </head>
 <body>
+    <!--Anzeige-->
     <h1>Vocab Beta</h1>
     <h2>FlashCards</h2>
+    <div class="card" id="flashcard"></div>
+    <button id="nextButton">Nächste Karte</button>
+    
+    <!--HTML Abschluss-->
 </body>
 </html>
+
+
 

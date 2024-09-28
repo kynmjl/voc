@@ -17,6 +17,9 @@
             position: relative;
             margin: 20px auto;
         }
+        .hidden {
+            display: none;
+        }
     </style>
     <script>
         let vocabList = []; // Initialisiere ein leeres Array
@@ -27,9 +30,18 @@
             const text = await response.text();
             const parser = new DOMParser();
             const htmlDocument = parser.parseFromString(text, 'text/html');
-            const vocabDataScript = htmlDocument.querySelector('script');
-            eval(vocabDataScript.textContent); // Führe den Script-Tag aus
-            vocabList = getVocabList(); // Hol die Vokabelliste
+            const rows = htmlDocument.querySelectorAll('table tbody tr');
+
+            // Iteriere über die Zeilen und füge die Daten zum vocabList Array hinzu
+            rows.forEach((row) => {
+                const cols = row.querySelectorAll('td');
+                if (cols.length > 1) {
+                    vocabList.push({
+                        de: cols[0].textContent,
+                        ar: cols[1].textContent
+                    });
+                }
+            });
             showCard(); // Zeige die erste Karte
         }
 
@@ -43,28 +55,4 @@
             const card = document.getElementById('flashcard');
             if (card.innerHTML === vocabList[currentCardIndex].de) {
                 card.innerHTML = card.dataset.ar; // Arabisch anzeigen
-            } else {
-                showCard(); // Deutsch zurück anzeigen
-            }
-        }
-
-        function nextCard() {
-            currentCardIndex = (currentCardIndex + 1) % vocabList.length; // Nächste Karte
-            showCard();
-        }
-
-        window.onload = function() {
-            loadVocabList(); // Lade die Vokabelliste beim Laden der Seite
-            const card = document.getElementById('flashcard');
-            card.addEventListener('click', flipCard); // Karte umdrehen
-            document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
-        };
-    </script>
-</head>
-<body>
-    <h1>Vocab Beta</h1>
-    <h2>FlashCards</h2>
-    <div class="card" id="flashcard"></div>
-    <button id="nextButton">Nächste Karte</button>
-</body>
-</html>
+            } else

@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: 30px;
             cursor: pointer;
             position: relative;
             margin: 20px auto;
@@ -55,6 +55,7 @@ window.onload = function() {
     const card = document.getElementById('flashcard');
     card.addEventListener('click', flipCard); // Karte umdrehen
     document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
+    document.getElementById('prevButton').addEventListener('click', prevCard); // Zurück zur vorherigen Karte
 };
 
         //Vorherige Karte (Java-Funktion) 
@@ -75,7 +76,7 @@ window.onload = function() {
 
     <div class="card" id="flashcard"></div>
  <div style="display: flex; justify-content: center;">
-    <button id="nextButton">Next</button>
+    <button id="nextButton">Next</button><div>
      <button id="prevButton">Back</button>
      
 </div>

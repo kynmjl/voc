@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -21,14 +22,30 @@
         }
     </style>
     <script>
-        const vocabList = [
-            { de: "Beweis, Bestätigung", ar: "إثبات" },
-            { de: "Vater", ar: "أب" },
-            { de: "mein Vater", ar: "أبي" },
-            // Füge hier die restlichen Vokabeln hinzu
-        ];
-
+        let vocabList = []; // Initialisiere ein leeres Array
         let currentCardIndex = 0;
+
+        async function loadVocabList() {
+            const response = await fetch('list1.html'); // Lade die Liste
+            const text = await response.text();
+            const parser = new DOMParser();
+            const htmlDocument = parser.parseFromString(text, 'text/html');
+            const rows = htmlDocument.querySelectorAll('table tr');
+
+            // Iteriere über die Zeilen und füge die Daten zum vocabList Array hinzu
+            rows.forEach((row, index) => {
+                if (index > 0) { // Überspringe die Header-Zeile
+                    const cols = row.querySelectorAll('td');
+                    if (cols.length > 1) {
+                        vocabList.push({
+                            de: cols[0].textContent,
+                            ar: cols[1].textContent
+                        });
+                    }
+                }
+            });
+            showCard(); // Zeige die erste Karte
+        }
 
         function showCard() {
             const card = document.getElementById('flashcard');
@@ -51,7 +68,7 @@
         }
 
         window.onload = function() {
-            showCard();
+            loadVocabList(); // Lade die Vokabelliste beim Laden der Seite
             const card = document.getElementById('flashcard');
             card.addEventListener('click', flipCard); // Karte umdrehen
             document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
@@ -68,6 +85,3 @@
     <!--HTML Abschluss-->
 </body>
 </html>
-
-
-

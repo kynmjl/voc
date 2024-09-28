@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -20,14 +21,8 @@
             display: none;
         }
     </style>
+    <script src="vocab.js"></script>
     <script>
-        const vocabList = [
-            { de: "Beweis, Bestätigung", ar: "إثبات" },
-            { de: "Vater", ar: "أب" },
-            { de: "mein Vater", ar: "أبي" },
-            // Füge hier die restlichen Vokabeln hinzu
-        ];
-
         let currentCardIndex = 0;
 
         function showCard() {
@@ -59,12 +54,9 @@
     </script>
 </head>
 <body>
-    <!--Anzeige-->
     <h1>Vocab Beta</h1>
     <h2>FlashCards</h2>
     <div class="card" id="flashcard"></div>
     <button id="nextButton">Nächste Karte</button>
-    
-    <!--HTML Abschluss-->
 </body>
 </html>

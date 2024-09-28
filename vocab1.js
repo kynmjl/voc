@@ -5,7 +5,7 @@ const vocabList = [
     { de: "mein Vater", ar: "أبي" },
     { de: "Bruder", ar: "أخ" },
     { de: "Schwester", ar: "أخت" },
-    { de: "Tür (Plural = أبواب)", ar: "باب" },
+    { de: "Tür", ar: "باب(Plural = أبواب)" },
     { de: "Krone", ar: "تاج" },
     { de: "und", ar: "و" },
     { de: "Bruder und Schwester", ar: "أخ وأخت" },

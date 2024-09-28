@@ -23,34 +23,36 @@
     </style>
     <script src="vocab1.js"></script>
     <script>
-        let currentCardIndex = 0;
+let currentCardIndex = 0;
 
-        function showCard() {
-            const card = document.getElementById('flashcard');
-            card.innerHTML = vocabList[currentCardIndex].de; // Deutsch anzeigen
-            card.dataset.ar = vocabList[currentCardIndex].ar; // Arabisch speichern
-        }
+function showCard() {
+    const card = document.getElementById('flashcard');
+    card.innerHTML = vocabList[currentCardIndex].de; // Deutsch anzeigen
+    card.dataset.ar = vocabList[currentCardIndex].ar; // Arabisch speichern
+    document.getElementById('counter').innerText = `Aktuelle Karte: ${currentCardIndex + 1} / ${vocabList.length}`; // Zähler aktualisieren
+}
 
-        function flipCard() {
-            const card = document.getElementById('flashcard');
-            if (card.innerHTML === vocabList[currentCardIndex].de) {
-                card.innerHTML = card.dataset.ar; // Arabisch anzeigen
-            } else {
-                showCard(); // Deutsch zurück anzeigen
-            }
-        }
+function flipCard() {
+    const card = document.getElementById('flashcard');
+    if (card.innerHTML === vocabList[currentCardIndex].de) {
+        card.innerHTML = card.dataset.ar; // Arabisch anzeigen
+    } else {
+        showCard(); // Deutsch zurück anzeigen
+    }
+}
 
-        function nextCard() {
-            currentCardIndex = (currentCardIndex + 1) % vocabList.length; // Nächste Karte
-            showCard();
-        }
+function nextCard() {
+    currentCardIndex = (currentCardIndex + 1) % vocabList.length; // Nächste Karte
+    showCard();
+}
 
-        window.onload = function() {
-            showCard();
-            const card = document.getElementById('flashcard');
-            card.addEventListener('click', flipCard); // Karte umdrehen
-            document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
-        };
+window.onload = function() {
+    showCard();
+    const card = document.getElementById('flashcard');
+    card.addEventListener('click', flipCard); // Karte umdrehen
+    document.getElementById('nextButton').addEventListener('click', nextCard); // Nächste Karte
+};
+
     </script>
 </head>
 <body>
